@@ -27,13 +27,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Login.setOnClickListener(this);
     }
     private void validate(String username, String password){
-        if ((username.equals("Admin")) && (password.equals("sarvesh"))){
+        if ((username.equals("Priyanka")) && (password.equals("sarvesh"))){
             Intent intent = new Intent(MainActivity.this,TodoActivity.class);
             startActivity(intent);
         }else {
             count--;
+            Attempts_info.setText("Number of attempts remaining :" + String.valueOf(count));
             if (count == 0){
                 Login.setEnabled(false);
+                Attempts_info.setText("No more attempts remaining");
             }
         }
     }
