@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText Password;
     private Button Login;
     private TextView Attempts_info;
+    private Button SignUp;
     private int count = 5;
 
     @Override
@@ -24,7 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Password = findViewById(R.id.etpassword);
         Login = findViewById(R.id.btnlogin);
         Attempts_info = findViewById(R.id.tvattempts);
+        SignUp = findViewById(R.id.btnsignup);
         Login.setOnClickListener(this);
+        SignUp.setOnClickListener(this);
     }
     private void validate(String username, String password){
         if ((username.equals("Priyanka")) && (password.equals("sarvesh"))){
@@ -42,6 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        validate(Name.getText().toString(), Password.getText().toString());
+        switch (view.getId()) {
+            case R.id.btnlogin:
+            validate(Name.getText().toString(), Password.getText().toString());
+            case R.id.btnsignup:
+                Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+                startActivity(intent);
+        }
     }
 }
