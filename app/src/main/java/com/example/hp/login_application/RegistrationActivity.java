@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText RegName, RegPassword, RegEmail;
     private Button RegLogin, RegSignUp;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         idAssignment();
         RegLogin.setOnClickListener(this);
         RegSignUp.setOnClickListener(this);
+        firebaseAuth = FirebaseAuth.getInstance();
 
     }
 

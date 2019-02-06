@@ -48,9 +48,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btnlogin:
             validate(Name.getText().toString(), Password.getText().toString());
+            break;
             case R.id.btnsignup:
                 Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
                 startActivity(intent);
+                break;
         }
     }
 }

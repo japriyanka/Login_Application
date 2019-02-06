@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1022856303489",
+    "firebase_url": "https://thingstodo-fe6d5.firebaseio.com",
+    "project_id": "thingstodo-fe6d5",
+    "storage_bucket": "thingstodo-fe6d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022856303489:android:d6c0f8d603972ca4",
+        "android_client_info": {
+          "package_name": "com.example.hp.login_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022856303489-k3nm8agaivrc57rtfd5j866h3ptlq420.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrNWJk73r8o4SJ28TWZWnEya7MqzZjtAo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
