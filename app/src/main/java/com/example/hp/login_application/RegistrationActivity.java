@@ -29,7 +29,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         firebaseAuth = FirebaseAuth.getInstance();
 
     }
-
+    //Assigning all ID's
     private void idAssignment(){
         RegName = findViewById(R.id.etRegName);
         RegEmail = findViewById(R.id.etRegMail);
@@ -42,21 +42,25 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            //The user has already signed up and he again wants to go to main activity to sign in
             case R.id.btnRegLogin:
                 Intent intent = new Intent(RegistrationActivity.this,MainActivity.class);
                 startActivity(intent);
                 break;
+            //Register new user with the firebase if all details are correct
             case R.id.btnRegSignUp:
                 String name,mail,password;
                 name = RegName.getText().toString().trim();
                 mail = RegEmail.getText().toString().trim();
                 password = RegPassword.getText().toString().trim();
-                if (!((name.length() == 0) && (mail.length() == 0) && (password.length() == 0))){
+                //Check all details are filled
+                if ((name.length() == 0) || (mail.length() == 0) || (password.length() == 0)){
                     Toast.makeText(this,"password/username/email has not entered",Toast.LENGTH_SHORT).show();
                     //  Intent i = new Intent(RegistrationActivity.this,MainActivity.class);
                     //startActivity(i);
                 }
                 else {
+                    //Details added in firebase if successful
                     firebaseAuth.createUserWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
