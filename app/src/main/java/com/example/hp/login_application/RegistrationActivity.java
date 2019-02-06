@@ -1,6 +1,7 @@
 package com.example.hp.login_application;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
@@ -41,16 +45,33 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case R.id.btnRegLogin:
                 Intent intent = new Intent(RegistrationActivity.this,MainActivity.class);
                 startActivity(intent);
+                break;
             case R.id.btnRegSignUp:
                 String name,mail,password;
                 name = RegName.getText().toString().trim();
                 mail = RegEmail.getText().toString().trim();
                 password = RegPassword.getText().toString().trim();
                 if (!((name.length() == 0) && (mail.length() == 0) && (password.length() == 0))){
-                    Toast.makeText(this,"password/username/email has not entered",Toast.LENGTH_SHORT);
+                    Toast.makeText(this,"password/username/email has not entered",Toast.LENGTH_SHORT).show();
                     //  Intent i = new Intent(RegistrationActivity.this,MainActivity.class);
                     //startActivity(i);
                 }
+                else {
+                    firebaseAuth.createUserWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(RegistrationActivity.this,"Registration Successful",Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(RegistrationActivity.this,MainActivity.class);
+                                startActivity(i);
+                            }
+                            else {
+                                Toast.makeText(RegistrationActivity.this,"Registration Failed",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+                break;
 
         }
 
