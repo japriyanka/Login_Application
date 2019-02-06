@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -41,9 +42,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 Intent intent = new Intent(RegistrationActivity.this,MainActivity.class);
                 startActivity(intent);
             case R.id.btnRegSignUp:
-                if (RegName.getText().toString().trim().length() != 0 && RegEmail.getText().toString().trim().length() != 0 && RegPassword.getText().toString().trim().length() != 0){
-                    Intent i = new Intent(RegistrationActivity.this,MainActivity.class);
-                    startActivity(i);
+                String name,mail,password;
+                name = RegName.getText().toString().trim();
+                mail = RegEmail.getText().toString().trim();
+                password = RegPassword.getText().toString().trim();
+                if (!((name.length() == 0) && (mail.length() == 0) && (password.length() == 0))){
+                    Toast.makeText(this,"password/username/email has not entered",Toast.LENGTH_SHORT);
+                    //  Intent i = new Intent(RegistrationActivity.this,MainActivity.class);
+                    //startActivity(i);
                 }
 
         }
